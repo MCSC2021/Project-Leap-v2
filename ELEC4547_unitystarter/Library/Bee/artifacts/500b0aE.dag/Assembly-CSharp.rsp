@@ -391,6 +391,7 @@
 "Assets/Cardboard/Scripts/VRDevices/CardboardAndroidDevice.cs"
 "Assets/Cardboard/Scripts/VRDevices/CardboardiOSDevice.cs"
 "Assets/Cardboard/Scripts/VRDevices/UnityEditorDevice.cs"
+"Assets/Scripts/Button/ButtonController.cs"
 "Assets/Scripts/ReadUSB.cs"
 -langversion:9.0
 
