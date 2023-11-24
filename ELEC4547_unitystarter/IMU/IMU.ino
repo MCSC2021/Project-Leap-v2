@@ -43,11 +43,15 @@ void setup() {
 }
 
 void loop() {
-
-  if (mpu.update()) {
-        update_quaternion();
-        print_quaternion();
+  if(mpu.update()){
+    static uint32_t prev_ms = millis();  
+    if(millis() > prev_ms +25){
+      print_quaternion();
+      prev_ms = millis();
+    }
+  update_quaternion();
   }
+
   
 }
 
