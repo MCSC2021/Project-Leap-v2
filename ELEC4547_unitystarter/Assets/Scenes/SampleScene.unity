@@ -291,6 +291,7 @@ GameObject:
   - component: {fileID: 192535229}
   - component: {fileID: 192535228}
   - component: {fileID: 192535227}
+  - component: {fileID: 192535230}
   m_Layer: 0
   m_Name: button2
   m_TagString: Untagged
@@ -306,7 +307,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 192535225}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.15, y: 0, z: 0.5}
+  m_LocalPosition: {x: -0.1, y: 0, z: 0.5}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -346,7 +347,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 471bc57e247daca428c672cda0dc18c1, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -376,6 +377,23 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 192535225}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &192535230
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 192535225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d01e5daa2b142cc4abe6b2bbaf810f51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseColor: {r: 0, g: 0.6117647, b: 1, a: 0.14901961}
+  switchColor: {r: 0.94776356, g: 1, b: 0, a: 0.14901961}
+  baseEmissionColor: {r: 0, g: 0.02094241, b: 1, a: 1}
+  switchEmissionColor: {r: 0.9490196, g: 1, b: 0, a: 1}
+  switchKey: 119
 --- !u!1 &414265477
 GameObject:
   m_ObjectHideFlags: 0
@@ -530,6 +548,7 @@ GameObject:
   - component: {fileID: 632434237}
   - component: {fileID: 632434236}
   - component: {fileID: 632434235}
+  - component: {fileID: 632434238}
   m_Layer: 0
   m_Name: button5
   m_TagString: Untagged
@@ -545,7 +564,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 632434233}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.3, y: 0, z: 0.5}
+  m_LocalPosition: {x: 0.2, y: 0, z: 0.5}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -585,7 +604,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 471bc57e247daca428c672cda0dc18c1, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -615,6 +634,23 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 632434233}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &632434238
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 632434233}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d01e5daa2b142cc4abe6b2bbaf810f51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseColor: {r: 0, g: 0.6117647, b: 1, a: 0.14901961}
+  switchColor: {r: 0.94776356, g: 1, b: 0, a: 0.14901961}
+  baseEmissionColor: {r: 0, g: 0.02094241, b: 1, a: 1}
+  switchEmissionColor: {r: 0.9490196, g: 1, b: 0, a: 1}
+  switchKey: 116
 --- !u!1 &1028527447
 GameObject:
   m_ObjectHideFlags: 0
@@ -706,7 +742,7 @@ Transform:
   m_GameObject: {fileID: 1028527447}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -0.198, z: 9.76}
-  m_LocalScale: {x: 2, y: 0.2, z: 20}
+  m_LocalScale: {x: 0.75, y: 0.2, z: 20}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 459783112}
@@ -798,6 +834,7 @@ GameObject:
   - component: {fileID: 1057943053}
   - component: {fileID: 1057943052}
   - component: {fileID: 1057943051}
+  - component: {fileID: 1057943054}
   m_Layer: 0
   m_Name: button1
   m_TagString: Untagged
@@ -813,7 +850,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1057943049}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.3, y: 0, z: 0.5}
+  m_LocalPosition: {x: -0.2, y: 0, z: 0.5}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -853,7 +890,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 471bc57e247daca428c672cda0dc18c1, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -883,6 +920,23 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1057943049}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1057943054
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1057943049}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d01e5daa2b142cc4abe6b2bbaf810f51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseColor: {r: 0, g: 0.6117647, b: 1, a: 0.14901961}
+  switchColor: {r: 0.94776356, g: 1, b: 0, a: 0.14901961}
+  baseEmissionColor: {r: 0, g: 0.02094241, b: 1, a: 1}
+  switchEmissionColor: {r: 0.9490196, g: 1, b: 0, a: 1}
+  switchKey: 113
 --- !u!4 &1254504721 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400004, guid: b8b03d395f5734e98af91ccf44f9bf47,
@@ -901,6 +955,7 @@ GameObject:
   - component: {fileID: 1275243135}
   - component: {fileID: 1275243134}
   - component: {fileID: 1275243133}
+  - component: {fileID: 1275243136}
   m_Layer: 0
   m_Name: button3
   m_TagString: Untagged
@@ -956,7 +1011,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 471bc57e247daca428c672cda0dc18c1, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -986,6 +1041,23 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1275243131}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1275243136
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1275243131}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d01e5daa2b142cc4abe6b2bbaf810f51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseColor: {r: 0, g: 0.6117647, b: 1, a: 0.14901961}
+  switchColor: {r: 0.94776356, g: 1, b: 0, a: 0.14901961}
+  baseEmissionColor: {r: 0, g: 0.02094241, b: 1, a: 1}
+  switchEmissionColor: {r: 0.9490196, g: 1, b: 0, a: 1}
+  switchKey: 101
 --- !u!1 &1286509174 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100006, guid: b8b03d395f5734e98af91ccf44f9bf47,
@@ -2332,6 +2404,7 @@ GameObject:
   - component: {fileID: 1639000773}
   - component: {fileID: 1639000772}
   - component: {fileID: 1639000771}
+  - component: {fileID: 1639000774}
   m_Layer: 0
   m_Name: button4
   m_TagString: Untagged
@@ -2347,7 +2420,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1639000769}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.15, y: 0, z: 0.5}
+  m_LocalPosition: {x: 0.1, y: 0, z: 0.5}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2387,7 +2460,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 471bc57e247daca428c672cda0dc18c1, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2417,6 +2490,23 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1639000769}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1639000774
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1639000769}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d01e5daa2b142cc4abe6b2bbaf810f51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseColor: {r: 0, g: 0.6117647, b: 1, a: 0.14901961}
+  switchColor: {r: 0.94776356, g: 1, b: 0, a: 0.14901961}
+  baseEmissionColor: {r: 0, g: 0.02094241, b: 1, a: 1}
+  switchEmissionColor: {r: 0.9490196, g: 1, b: 0, a: 1}
+  switchKey: 114
 --- !u!1 &1684643440
 GameObject:
   m_ObjectHideFlags: 0
