@@ -9,7 +9,7 @@ public class NodeMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        beatTempo /= 60f;
+        beatTempo = beatTempo / 60f;
     }
 
     // Update is called once per frame
@@ -17,10 +17,7 @@ public class NodeMovement : MonoBehaviour
     {
         if (!hasStarted)
         {
-            if (Input.anyKeyDown)
-            {
-                hasStarted = true;
-            }
+            
         }
         else
         {
