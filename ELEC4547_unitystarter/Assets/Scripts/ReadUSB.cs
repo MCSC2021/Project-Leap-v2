@@ -22,6 +22,8 @@ public class ReadUSB : MonoBehaviour
 
 
     SerialPort serialPort = new SerialPort(portName, baudrate);
+    Quaternion targetRotation;
+    public float rotationSpeed = 5f;
 
     void Start() {
 
@@ -61,8 +63,9 @@ public class ReadUSB : MonoBehaviour
 
             q.Normalize();
 
-            transform.rotation = Quaternion.Inverse(q);
+            targetRotation = Quaternion.Inverse(q);
         }
+        transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
     }
 
     void OnGUI() {
