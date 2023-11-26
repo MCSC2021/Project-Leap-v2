@@ -56,7 +56,7 @@ public class ReadUSB : MonoBehaviour
         // Split string into lines
         string[] lines = text.Split('\n');
         string[] line = lines[0].Split(' ');
-        print(lines);
+        //print(lines);
         if (line[0] == "QC")
         {
             float quat_x = HexToFloat(line[1]);
@@ -74,13 +74,12 @@ public class ReadUSB : MonoBehaviour
         //Quaternion offsetRotation = Quaternion.Euler(rotationOffset);
         //targetRotation = offsetRotation * targetRotation;
 
-        
     }
 
     void OnGUI() {
     string euler = "Euler angle: " + transform.eulerAngles.x + ", " +
                     transform.eulerAngles.y + ", " + transform.eulerAngles.z;
-        print(euler);
+        //print(euler);
         
     }
 

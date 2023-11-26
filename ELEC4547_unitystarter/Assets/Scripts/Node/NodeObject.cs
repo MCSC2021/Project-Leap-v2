@@ -23,17 +23,20 @@ public class NodeObject : MonoBehaviour
 
                 //GameManager.instance.NoteHit();
 
-                if(transform.position.z > 0.1 || transform.position.z < -0.1)
+                if(Mathf.Abs(transform.position.z) > 0.1f)
                 {
-                    GameManager.instance.NormalHit();
+                    Debug.Log("Hit");
+                    GameManager.instance.NormalHit(transform.position);
                 }
-                else if (transform.position.z > 0.05 || transform.position.z < -0.05)
+                else if (Mathf.Abs(transform.position.z) > 0.05f)
                 {
-                    GameManager.instance.GoodHit();
+                    Debug.Log("Good");
+                    GameManager.instance.GoodHit(transform.position);
                 }
                 else if (transform.position.z > 0.025 || transform.position.z < -0.025)
                 {
-                    GameManager.instance.PerfectHit();
+                    Debug.Log("Perfect");
+                    GameManager.instance.PerfectHit(transform.position);
                 }
             }
         }

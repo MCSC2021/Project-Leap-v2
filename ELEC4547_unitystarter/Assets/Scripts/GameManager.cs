@@ -24,9 +24,25 @@ public class GameManager : MonoBehaviour
     public int multiplerTracker;
     public int[] multiplerThresholds;
 
+    public GameObject NormalPS, GoodPS, PerfectPS;
+
     // Reference to the TextMeshProUGUI component
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI MultiplerText;
+
+
+    public float totalNotes;
+    public float normalNotes;
+    public float goodNotes;
+    public float perfectNotes;
+    public float missNotes;
+
+    public GameObject resultsScreen;
+    public TextMeshProUGUI percentHitText, normalsText, goodsText, perfectsText, missesText, rankText, finalScoreText;
+
+
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -34,6 +50,8 @@ public class GameManager : MonoBehaviour
         scoreText.text = "Score: 0";
         currentMultipler = 1;
         MultiplerText.text = "Multipler: 1x";
+
+        totalNotes = FindObjectsOfType<NodeObject>().Length;
     }
 
     // Update is called once per frame
@@ -49,6 +67,52 @@ public class GameManager : MonoBehaviour
                 theMusic.Play();
 
                 
+            }
+        }
+        else
+        {
+            if (!theMusic.isPlaying && !resultsScreen.activeInHierarchy)
+            {
+                resultsScreen.SetActive(true);
+                normalsText.text = normalNotes.ToString();
+                goodsText.text = goodNotes.ToString();
+                perfectsText.text = perfectNotes.ToString();
+                missesText.text = missNotes.ToString();
+                var percentage = (1 - missNotes / totalNotes) * 100f ;
+                percentHitText.text = percentage.ToString("F1") + "%";
+
+                string rankVal = "F";
+                if(percentage > 40)
+                {
+                    rankVal = "D";
+                    if (percentage > 55)
+                    {
+                        rankVal = "C";
+                        if (percentage > 70)
+                        {
+                            rankVal = "B";
+                            if (percentage > 85)
+                            {
+                                rankVal = "A";
+                                if (percentage > 95)
+                                {
+                                    rankVal = "S";
+                                    if (percentage == 100)
+                                    {
+                                        rankVal = "SSS";
+
+                                    }
+                                }
+                                
+                            }
+                        }
+                    }
+                }
+                
+                rankText.text = rankVal;
+
+                finalScoreText.text = currentScore.ToString();
+
             }
         }
     }
@@ -75,22 +139,28 @@ public class GameManager : MonoBehaviour
         scoreText.text = "Score: " + currentScore.ToString();
     }
 
-    public void NormalHit()
+    public void NormalHit(Vector3 hitPosition)
     {
         currentScore += scorePerNote * currentMultipler;
         NoteHit();
+        SpwanPS(hitPosition, NormalPS);
+        normalNotes++;
     }
 
-    public void GoodHit()
+    public void GoodHit(Vector3 hitPosition)
     {
         currentScore += scorePerGoodNote * currentMultipler;
         NoteHit();
+        SpwanPS(hitPosition, GoodPS);
+        goodNotes++;
     }
 
-    public void PerfectHit()
+    public void PerfectHit(Vector3 hitPosition)
     {
         currentScore += scorePerPerfectNote * currentMultipler;
         NoteHit();
+        SpwanPS(hitPosition, PerfectPS);
+        perfectNotes++;
     }
 
     public void NoteMissed()
@@ -99,5 +169,11 @@ public class GameManager : MonoBehaviour
         currentMultipler = 1;
         multiplerTracker = 0;
         MultiplerText.text = "Multipler: " + currentMultipler + "x";
+        missNotes++;
+    }
+
+    private void SpwanPS(Vector3 position, GameObject itemToSpawn)
+    {
+        Instantiate(itemToSpawn, position, Quaternion.identity);
     }
 }

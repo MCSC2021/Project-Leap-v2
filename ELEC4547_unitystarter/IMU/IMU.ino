@@ -10,7 +10,6 @@ typedef union
 cracked_float_t;
 
 cracked_float_t quat_x, quat_y, quat_z, quat_w;
-cracked_float_t Euler_x, quat_y, quat_z, quat_w;
 
 void setup() {
     Serial.begin(115200);
@@ -63,12 +62,6 @@ void update_quaternion()
   quat_w.v = mpu.getQuaternionW();
 }
 
-void update_Euler()
-{
-  Euler_x.v = mpu.GyroX();
-  Euler_y.v = mpu.GyroY();
-  Euler_z.v = mpu.GyroZ();
-}
 
 void print_quaternion()
 {
@@ -85,18 +78,6 @@ void print_quaternion()
   Serial.println();
 }
 
-void print_Euler()
-{
-  // update_quaternion();
-  Serial.print("QC");
-  Serial.print(' ');
-  PrintHex8(Euler_x.b, 4);
-  Serial.print(' ');
-  PrintHex8(Euler_y.b, 4);
-  Serial.print(' ');
-  PrintHex8(Euler_z.b, 4);
-  Serial.println();
-}
 
 // prints 8-bit data in hex with leading zeroes
 void PrintHex8(uint8_t *data, uint8_t length) 
