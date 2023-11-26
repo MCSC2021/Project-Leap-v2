@@ -23,7 +23,11 @@ public class ReadUSB : MonoBehaviour
 
     SerialPort serialPort = new SerialPort(portName, baudrate);
     Quaternion targetRotation;
+    Quaternion initialRotation;
     public float rotationSpeed = 5f;
+
+    // Rotation offset variables
+    public Vector3 rotationOffset;
 
     void Start() {
 
@@ -32,6 +36,7 @@ public class ReadUSB : MonoBehaviour
     if (!serialPort.IsOpen) {
         Debug.LogError("Couldn't open " + portName);
     }
+        initialRotation = transform.rotation;
     }
 
     void Update() {
@@ -59,18 +64,23 @@ public class ReadUSB : MonoBehaviour
             float quat_z = HexToFloat(line[3]);
             float quat_w = HexToFloat(line[4]);
 
-            Quaternion q = new Quaternion(quat_y, -quat_z, -quat_x, quat_w);
+            Quaternion q = new Quaternion(quat_y, -quat_z, quat_x, quat_w);
 
             q.Normalize();
 
             targetRotation = Quaternion.Inverse(q);
         }
+        // Apply rotation offset
+        Quaternion offsetRotation = Quaternion.Euler(rotationOffset);
+        targetRotation = offsetRotation * targetRotation;
+
         transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
     }
 
     void OnGUI() {
     string euler = "Euler angle: " + transform.eulerAngles.x + ", " +
                     transform.eulerAngles.y + ", " + transform.eulerAngles.z;
+        print(euler);
     }
 
     public static float HexToFloat(string hexVal)
@@ -82,4 +92,14 @@ public class ReadUSB : MonoBehaviour
         }
         return BitConverter.ToSingle(data, 0);
     }
+
+    public void RecenterRotation()
+    {
+        initialRotation = transform.rotation;
+        Quaternion inverseInitialRotation = Quaternion.Inverse(initialRotation);
+        Quaternion newRotation = inverseInitialRotation ;
+
+        transform.rotation = newRotation;
+    }
+
 }
