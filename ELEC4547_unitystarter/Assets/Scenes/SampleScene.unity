@@ -653,6 +653,8 @@ MonoBehaviour:
   IMU: {fileID: 1288742117}
   currentScore: 0
   scorePerNote: 100
+  scorePerGoodNote: 125
+  scorePerPerfectNote: 150
   currentMultipler: 0
   multiplerTracker: 0
   multiplerThresholds: 04000000100000002000000040000000

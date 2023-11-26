@@ -21,7 +21,20 @@ public class NodeObject : MonoBehaviour
             {
                 gameObject.SetActive(false);
 
-                GameManager.instance.NoteHit();
+                //GameManager.instance.NoteHit();
+
+                if(transform.position.z > 0.1 || transform.position.z < -0.1)
+                {
+                    GameManager.instance.NormalHit();
+                }
+                else if (transform.position.z > 0.05 || transform.position.z < -0.05)
+                {
+                    GameManager.instance.GoodHit();
+                }
+                else if (transform.position.z > 0.025 || transform.position.z < -0.025)
+                {
+                    GameManager.instance.PerfectHit();
+                }
             }
         }
     }
