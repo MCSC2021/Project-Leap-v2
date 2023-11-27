@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-
+using System;
 
 public class GameManager : MonoBehaviour
 {
@@ -18,6 +18,8 @@ public class GameManager : MonoBehaviour
     public int currentScore;
     public int scorePerNote = 100;
     public int scorePerGoodNote = 125;
+    public bool[] Ispressing = { false, false, false, false, false };
+    
     public int scorePerPerfectNote = 150;
 
     public int currentMultipler;
@@ -29,14 +31,15 @@ public class GameManager : MonoBehaviour
     // Reference to the TextMeshProUGUI component
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI MultiplerText;
+    public TextMeshProUGUI ComboText;
 
-
+    public float combo;
     public float totalNotes;
     public float normalNotes;
     public float goodNotes;
     public float perfectNotes;
     public float missNotes;
-
+    float percentage = 0f;
     public GameObject resultsScreen;
     public TextMeshProUGUI percentHitText, normalsText, goodsText, perfectsText, missesText, rankText, finalScoreText;
 
@@ -50,13 +53,15 @@ public class GameManager : MonoBehaviour
         scoreText.text = "Score: 0";
         currentMultipler = 1;
         MultiplerText.text = "Multipler: 1x";
-
+        combo = 0;
         totalNotes = FindObjectsOfType<NodeObject>().Length;
     }
 
     // Update is called once per frame
     void Update()
     {
+        string boolArrayString = string.Join(", ", Ispressing);
+        Debug.Log("boolArray: " + boolArrayString);
         if (!startplaying)
         {
             if (Input.anyKeyDown)
@@ -78,7 +83,7 @@ public class GameManager : MonoBehaviour
                 goodsText.text = goodNotes.ToString();
                 perfectsText.text = perfectNotes.ToString();
                 missesText.text = missNotes.ToString();
-                var percentage = (1 - missNotes / totalNotes) * 100f ;
+                
                 percentHitText.text = percentage.ToString("F1") + "%";
 
                 string rankVal = "F";
@@ -119,8 +124,8 @@ public class GameManager : MonoBehaviour
 
     public void NoteHit()
     {
-        Debug.Log("Hit On Time");
-        if(currentMultipler -1 < multiplerThresholds.Length)
+        combo++;
+        if (currentMultipler -1 < multiplerThresholds.Length)
         {
             multiplerTracker++;
             if (multiplerThresholds[currentMultipler - 1] <= multiplerTracker)
@@ -132,8 +137,14 @@ public class GameManager : MonoBehaviour
         }
         
         UpdateScoreText();
+        UpdateCombo();
     }
-    
+
+    private void UpdateCombo()
+    {
+        ComboText.text = combo.ToString() + " Combo";
+    }
+
     void UpdateScoreText()
     {
         scoreText.text = "Score: " + currentScore.ToString();
@@ -142,6 +153,7 @@ public class GameManager : MonoBehaviour
     public void NormalHit(Vector3 hitPosition)
     {
         currentScore += scorePerNote * currentMultipler;
+        percentage += 0.3f * 100 / totalNotes;
         NoteHit();
         SpwanPS(hitPosition, NormalPS);
         normalNotes++;
@@ -150,6 +162,7 @@ public class GameManager : MonoBehaviour
     public void GoodHit(Vector3 hitPosition)
     {
         currentScore += scorePerGoodNote * currentMultipler;
+        percentage += 0.6f * 100 / totalNotes;
         NoteHit();
         SpwanPS(hitPosition, GoodPS);
         goodNotes++;
@@ -158,6 +171,7 @@ public class GameManager : MonoBehaviour
     public void PerfectHit(Vector3 hitPosition)
     {
         currentScore += scorePerPerfectNote * currentMultipler;
+        percentage +=  100 / totalNotes;
         NoteHit();
         SpwanPS(hitPosition, PerfectPS);
         perfectNotes++;
@@ -168,12 +182,23 @@ public class GameManager : MonoBehaviour
         Debug.Log("Missed Note");
         currentMultipler = 1;
         multiplerTracker = 0;
+        combo = 0;
         MultiplerText.text = "Multipler: " + currentMultipler + "x";
         missNotes++;
+        UpdateCombo();
     }
 
     private void SpwanPS(Vector3 position, GameObject itemToSpawn)
     {
         Instantiate(itemToSpawn, position, Quaternion.identity);
+    }
+
+    public void HandPress(int i)
+    {
+        Ispressing[i-1] = true;
+    }
+    public void HandRelease(int i)
+    {
+        Ispressing[i-1] = false;
     }
 }

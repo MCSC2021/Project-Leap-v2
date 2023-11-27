@@ -6,16 +6,18 @@ public class NodeObject : MonoBehaviour
 {
     public bool canBePressed;
     public KeyCode keyToPress;
+    public int Line;
     // Start is called before the first frame update
     void Start()
     {
-        
+        float xPos = transform.position.x;
+        int Line = PositionUtility.CalculatePositionValue(xPos);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(keyToPress))
+        if (GameManager.instance.Ispressing[Line])
         {
             if (canBePressed)
             {

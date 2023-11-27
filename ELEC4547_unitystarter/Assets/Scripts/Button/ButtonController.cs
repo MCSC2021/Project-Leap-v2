@@ -12,9 +12,13 @@ public class ButtonController : MonoBehaviour
 
     private Renderer cubeRenderer;
     private bool isSwitched;
+    private int Line;
 
     private void Start()
     {
+        float xPos = transform.position.x;
+        Line = PositionUtility.CalculatePositionValue(xPos);
+
         cubeRenderer = GetComponent<Renderer>();
         isSwitched = false;
 
@@ -44,4 +48,21 @@ public class ButtonController : MonoBehaviour
             }
         }
     }
+
+    public void HandHitButton()
+    {
+        GameManager.instance.HandPress(Line);
+        cubeRenderer.material.color = switchColor;
+        cubeRenderer.material.SetColor("_EmissionColor", switchEmissionColor);
+        isSwitched = true;
+    }
+
+    public void HandReleaseButton()
+    {
+        GameManager.instance.HandRelease(Line);
+        cubeRenderer.material.color = baseColor;
+        cubeRenderer.material.SetColor("_EmissionColor", baseEmissionColor);
+        isSwitched = false;
+    }
+
 }
