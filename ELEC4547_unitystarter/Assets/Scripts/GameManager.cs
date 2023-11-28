@@ -43,8 +43,8 @@ public class GameManager : MonoBehaviour
     public GameObject resultsScreen;
     public TextMeshProUGUI percentHitText, normalsText, goodsText, perfectsText, missesText, rankText, finalScoreText;
 
-
-
+    public String state;
+    public NodeObject[] nodeObjects;
 
     // Start is called before the first frame update
     void Start()
@@ -55,70 +55,65 @@ public class GameManager : MonoBehaviour
         MultiplerText.text = "Multipler: 1x";
         combo = 0;
         totalNotes = FindObjectsOfType<NodeObject>().Length;
+        nodeObjects = FindObjectsOfType<NodeObject>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        string boolArrayString = string.Join(", ", Ispressing);
-        Debug.Log("boolArray: " + boolArrayString);
-        if (!startplaying)
-        {
-            if (Input.anyKeyDown)
-            {
-                startplaying = true;
-                theNM.hasStarted = true;
-                
-                theMusic.Play();
-
-                
-            }
-        }
-        else
-        {
-            if (!theMusic.isPlaying && !resultsScreen.activeInHierarchy)
-            {
-                resultsScreen.SetActive(true);
-                normalsText.text = normalNotes.ToString();
-                goodsText.text = goodNotes.ToString();
-                perfectsText.text = perfectNotes.ToString();
-                missesText.text = missNotes.ToString();
-                
-                percentHitText.text = percentage.ToString("F1") + "%";
-
-                string rankVal = "F";
-                if(percentage > 40)
+        switch (state){
+            case "Start":
+                resultsScreen.SetActive(false);
+                normalNotes = 0; combo = 0; goodNotes = 0; perfectNotes = 0; missNotes = 0; currentMultipler = 1; currentScore = 0; percentage = 0f;
+                break;
+            case "Play":
+                if (!theMusic.isPlaying && !resultsScreen.activeInHierarchy)
                 {
-                    rankVal = "D";
-                    if (percentage > 55)
-                    {
-                        rankVal = "C";
-                        if (percentage > 70)
-                        {
-                            rankVal = "B";
-                            if (percentage > 85)
-                            {
-                                rankVal = "A";
-                                if (percentage > 95)
-                                {
-                                    rankVal = "S";
-                                    if (percentage == 100)
-                                    {
-                                        rankVal = "SSS";
+                    resultsScreen.SetActive(true);
+                    normalsText.text = normalNotes.ToString();
+                    goodsText.text = goodNotes.ToString();
+                    perfectsText.text = perfectNotes.ToString();
+                    missesText.text = missNotes.ToString();
 
+                    percentHitText.text = percentage.ToString("F1") + "%";
+
+                    string rankVal = "F";
+                    if (percentage > 40)
+                    {
+                        rankVal = "D";
+                        if (percentage > 55)
+                        {
+                            rankVal = "C";
+                            if (percentage > 70)
+                            {
+                                rankVal = "B";
+                                if (percentage > 85)
+                                {
+                                    rankVal = "A";
+                                    if (percentage > 95)
+                                    {
+                                        rankVal = "S";
+                                        if (percentage == 100)
+                                        {
+                                            rankVal = "SSS";
+
+                                        }
                                     }
+
                                 }
-                                
                             }
                         }
                     }
+
+                    rankText.text = rankVal;
+
+                    finalScoreText.text = currentScore.ToString();
+                    startplaying = false;
                 }
-                
-                rankText.text = rankVal;
-
-                finalScoreText.text = currentScore.ToString();
-
-            }
+                break;
+            default:
+                startplaying = false;
+                break;
         }
     }
 
@@ -200,5 +195,25 @@ public class GameManager : MonoBehaviour
     public void HandRelease(int i)
     {
         Ispressing[i-1] = false;
+    }
+
+    public void Startplay()
+    {
+        startplaying = true;
+        theNM.hasStarted = true;
+        theMusic.Play();
+        state = "Play";
+    }
+
+    public void ReStartplay()
+    {
+        startplaying = false;
+        theNM.hasStarted = false;
+        state = "Start";
+        
+        foreach (NodeObject nodeObject in nodeObjects)
+        {
+            nodeObject.Reset();
+        }
     }
 }

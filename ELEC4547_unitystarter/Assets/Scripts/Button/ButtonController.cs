@@ -12,7 +12,7 @@ public class ButtonController : MonoBehaviour
 
     private Renderer cubeRenderer;
     private bool isSwitched;
-    private int Line;
+    public int Line;
 
     private void Start()
     {

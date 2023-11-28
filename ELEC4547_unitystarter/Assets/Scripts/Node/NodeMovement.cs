@@ -17,7 +17,7 @@ public class NodeMovement : MonoBehaviour
     {
         if (!hasStarted)
         {
-            
+            transform.position = new Vector3(0f, 0f, 0f);
         }
         else
         {

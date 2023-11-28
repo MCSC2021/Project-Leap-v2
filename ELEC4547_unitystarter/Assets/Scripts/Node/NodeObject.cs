@@ -11,18 +11,16 @@ public class NodeObject : MonoBehaviour
     void Start()
     {
         float xPos = transform.position.x;
-        int Line = PositionUtility.CalculatePositionValue(xPos);
+        Line = PositionUtility.CalculatePositionValue(xPos);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (GameManager.instance.Ispressing[Line])
+        if (GameManager.instance.Ispressing[Line-1])
         {
             if (canBePressed)
             {
-                gameObject.SetActive(false);
-
                 //GameManager.instance.NoteHit();
 
                 if(Mathf.Abs(transform.position.z) > 0.1f)
@@ -40,6 +38,7 @@ public class NodeObject : MonoBehaviour
                     Debug.Log("Perfect");
                     GameManager.instance.PerfectHit(transform.position);
                 }
+                gameObject.SetActive(false);
             }
         }
     }
@@ -58,5 +57,12 @@ public class NodeObject : MonoBehaviour
             canBePressed = false;
             GameManager.instance.NoteMissed();
         }
+    }
+    public void Reset()
+    {
+        Debug.Log("Resetting game object: " + gameObject.name);
+        gameObject.SetActive(true);
+        canBePressed = false;
+        Debug.Log("Game object activated: " + gameObject.name);
     }
 }
