@@ -68,11 +68,9 @@ public class ReadUSB : MonoBehaviour
 
             q.Normalize();
 
-            transform.rotation = Quaternion.Inverse(q);
+            targetRotation = Quaternion.Inverse(q);
         }
-        // Apply rotation offset
-        //Quaternion offsetRotation = Quaternion.Euler(rotationOffset);
-        //targetRotation = offsetRotation * targetRotation;
+        transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
 
     }
 
