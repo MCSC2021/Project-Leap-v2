@@ -43,8 +43,9 @@ public class GameManager : MonoBehaviour
     public GameObject resultsScreen;
     public TextMeshProUGUI percentHitText, normalsText, goodsText, perfectsText, missesText, rankText, finalScoreText;
 
-    public String state;
+    private string state;
     public NodeObject[] nodeObjects;
+    public GameObject playButton, restartButton;
 
     // Start is called before the first frame update
     void Start()
@@ -56,6 +57,7 @@ public class GameManager : MonoBehaviour
         combo = 0;
         totalNotes = FindObjectsOfType<NodeObject>().Length;
         nodeObjects = FindObjectsOfType<NodeObject>();
+        state = "Start";
     }
 
     // Update is called once per frame
@@ -64,9 +66,17 @@ public class GameManager : MonoBehaviour
         switch (state){
             case "Start":
                 resultsScreen.SetActive(false);
-                normalNotes = 0; combo = 0; goodNotes = 0; perfectNotes = 0; missNotes = 0; currentMultipler = 1; currentScore = 0; percentage = 0f;
+                normalNotes = 0;
+                combo = 0;
+                goodNotes = 0;
+                perfectNotes = 0;
+                missNotes = 0;
+                currentMultipler = 1;
+                currentScore = 0;
+                percentage = 0f;
                 break;
             case "Play":
+                
                 if (!theMusic.isPlaying && !resultsScreen.activeInHierarchy)
                 {
                     resultsScreen.SetActive(true);
@@ -109,6 +119,8 @@ public class GameManager : MonoBehaviour
 
                     finalScoreText.text = currentScore.ToString();
                     startplaying = false;
+
+                    restartButton.SetActive(true);
                 }
                 break;
             default:
@@ -199,10 +211,15 @@ public class GameManager : MonoBehaviour
 
     public void Startplay()
     {
+        
         startplaying = true;
         theNM.hasStarted = true;
         theMusic.Play();
         state = "Play";
+
+        playButton.SetActive(false);
+        
+
     }
 
     public void ReStartplay()
@@ -210,7 +227,10 @@ public class GameManager : MonoBehaviour
         startplaying = false;
         theNM.hasStarted = false;
         state = "Start";
-        
+
+        playButton.SetActive(true);
+        restartButton.SetActive(false);
+
         foreach (NodeObject nodeObject in nodeObjects)
         {
             nodeObject.Reset();

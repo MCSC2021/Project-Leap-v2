@@ -1379,6 +1379,7 @@ MonoBehaviour:
   baseEmissionColor: {r: 0, g: 0.02094241, b: 1, a: 1}
   switchEmissionColor: {r: 0.9490196, g: 1, b: 0, a: 1}
   switchKey: 119
+  Line: 0
 --- !u!54 &192535231
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -4204,6 +4205,7 @@ MonoBehaviour:
   rankText: {fileID: 67647514}
   finalScoreText: {fileID: 67647513}
   state: 
+  nodeObjects: []
 --- !u!4 &520461891
 Transform:
   m_ObjectHideFlags: 0
@@ -5056,6 +5058,7 @@ MonoBehaviour:
   baseEmissionColor: {r: 0, g: 0.02094241, b: 1, a: 1}
   switchEmissionColor: {r: 0.9490196, g: 1, b: 0, a: 1}
   switchKey: 116
+  Line: 0
 --- !u!54 &632434239
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -8976,6 +8979,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5270838610523157747, guid: d1c00f89ef60a3446ad9eef2d361e2a1,
+        type: 3}
+      propertyPath: trackingSource
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 5270838610523157748, guid: d1c00f89ef60a3446ad9eef2d361e2a1,
         type: 3}
       propertyPath: m_RootOrder
@@ -9150,6 +9158,7 @@ MonoBehaviour:
   baseEmissionColor: {r: 0, g: 0.02094241, b: 1, a: 1}
   switchEmissionColor: {r: 0.9490196, g: 1, b: 0, a: 1}
   switchKey: 113
+  Line: 0
 --- !u!54 &1057943055
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -10792,6 +10801,7 @@ MonoBehaviour:
   baseEmissionColor: {r: 0, g: 0.02094241, b: 1, a: 1}
   switchEmissionColor: {r: 0.9490196, g: 1, b: 0, a: 1}
   switchKey: 101
+  Line: 0
 --- !u!54 &1275243137
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -16513,6 +16523,7 @@ MonoBehaviour:
   baseEmissionColor: {r: 0, g: 0.02094241, b: 1, a: 1}
   switchEmissionColor: {r: 0.9490196, g: 1, b: 0, a: 1}
   switchKey: 114
+  Line: 0
 --- !u!54 &1639000775
 Rigidbody:
   m_ObjectHideFlags: 0
