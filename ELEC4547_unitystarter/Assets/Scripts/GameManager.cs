@@ -227,13 +227,13 @@ public class GameManager : MonoBehaviour
         startplaying = false;
         theNM.hasStarted = false;
         state = "Start";
-
-        playButton.SetActive(true);
-        restartButton.SetActive(false);
-
         foreach (NodeObject nodeObject in nodeObjects)
         {
             nodeObject.Reset();
         }
+        playButton.SetActive(true);
+        restartButton.SetActive(false);
+
+        
     }
 }
